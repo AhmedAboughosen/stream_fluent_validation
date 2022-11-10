@@ -2,23 +2,20 @@ import 'package:fluent_validation/abstract/abstract_rule_builder.dart';
 import 'package:fluent_validation/enum/validation_enum.dart';
 import 'package:fluent_validation/model/validator_info.dart';
 
+import '../abstract/abstract_validator.dart';
+import '../fluent_validation.dart';
+import '../model/stream_validator.dart';
+
 extension DefaultValidatorExtensions on AbstractRuleBuilder {
   AbstractRuleBuilder matches(String expression) {
     var _selectedRegExp = RegExp(expression);
 
-    print("matches expression");
-
     streamValidator.innerStream.listen(
       (event) {
-        print("innerStream");
-
         if (!_selectedRegExp.hasMatch(event)) {
-          print("not match");
           streamValidator.streamSink
               .addError(_getErrorMessage(ValidationTagEnum.MATCHES));
         } else {
-          print(" match");
-
           streamValidator.streamSink.addError(ValidationEnum.validated);
           streamValidator.streamSink.add(event);
         }
@@ -26,14 +23,15 @@ extension DefaultValidatorExtensions on AbstractRuleBuilder {
     );
 
     validatorInfoList.add(ValidatorInfo(
-        errorMessage: null, validationTagEnum: ValidationTagEnum.MATCHES));
+        errorMessage: "value is not matches",
+        validationTagEnum: ValidationTagEnum.MATCHES));
 
     return this;
   }
 
   AbstractRuleBuilder emailAddress() {
     var _selectedRegExp = RegExp(
-        r"^[a-zA-Z0-9.a-zA-Z0-9.!#$%&'*+-/=?^_`{|}~]+@[a-zA-Z0-9\-\_]+(\.[a-zA-Z]+)*$");
+        '^[_A-Za-z0-9-]+(\\.[_A-Za-z0-9-]+)*@[A-Za-z0-9]+(\\.[A-Za-z0-9]+)*(\\.[A-Za-z]{2,})\$');
 
     streamValidator.innerStream.listen((event) {
       if (!_selectedRegExp.hasMatch(event)) {
@@ -66,12 +64,12 @@ extension DefaultValidatorExtensions on AbstractRuleBuilder {
     });
 
     validatorInfoList.add(ValidatorInfo(
-        errorMessage: null,
+        errorMessage: "value is Number",
         validationTagEnum: ValidationTagEnum.SHOULD_BE_NUMBER));
     return this;
   }
 
-  void between(int from, int to) {
+  AbstractRuleBuilder between(int from, int to) {
     streamValidator.innerStream.listen((event) {
       String value = event;
 
@@ -85,11 +83,13 @@ extension DefaultValidatorExtensions on AbstractRuleBuilder {
     });
 
     validatorInfoList.add(ValidatorInfo(
-        errorMessage: null,
-        validationTagEnum: ValidationTagEnum.EMAIL_ADDRESS));
+        errorMessage: "value should be between ${from} and ${to}",
+        validationTagEnum: ValidationTagEnum.BETWEEN));
+
+    return this;
   }
 
-  void notEmpty() {
+  AbstractRuleBuilder notEmpty() {
     var _selectedRegExp = RegExp('^\\w{1,1}\$');
 
     streamValidator.innerStream.listen((event) {
@@ -103,10 +103,13 @@ extension DefaultValidatorExtensions on AbstractRuleBuilder {
     });
 
     validatorInfoList.add(ValidatorInfo(
-        errorMessage: null, validationTagEnum: ValidationTagEnum.NOT_EMPTY));
+        errorMessage: "value should not be empty",
+        validationTagEnum: ValidationTagEnum.NOT_EMPTY));
+
+    return this;
   }
 
-  void isNull() {
+  AbstractRuleBuilder isNull() {
     streamValidator.innerStream.listen(
       (event) {
         if (event != null) {
@@ -120,10 +123,13 @@ extension DefaultValidatorExtensions on AbstractRuleBuilder {
     );
 
     validatorInfoList.add(ValidatorInfo(
-        errorMessage: null, validationTagEnum: ValidationTagEnum.IS_NULL));
+        errorMessage: "value is not  null",
+        validationTagEnum: ValidationTagEnum.IS_NULL));
+
+    return this;
   }
 
-  void isNotNull() {
+  AbstractRuleBuilder isNotNull() {
     streamValidator.innerStream.listen(
       (event) {
         if (event == null) {
@@ -137,12 +143,14 @@ extension DefaultValidatorExtensions on AbstractRuleBuilder {
     );
 
     validatorInfoList.add(ValidatorInfo(
-        errorMessage: null, validationTagEnum: ValidationTagEnum.IS_NOT_NULL));
+        errorMessage: "value is   null",
+        validationTagEnum: ValidationTagEnum.IS_NOT_NULL));
+    return this;
   }
 
-  void empty() {
+  AbstractRuleBuilder isEmpty() {
     streamValidator.innerStream.listen((event) {
-      if (event != '') {
+      if ("${event}".isEmpty) {
         streamValidator.streamSink
             .addError(_getErrorMessage(ValidationTagEnum.EMPTY));
       } else {
@@ -152,12 +160,19 @@ extension DefaultValidatorExtensions on AbstractRuleBuilder {
     });
 
     validatorInfoList.add(ValidatorInfo(
-        errorMessage: null, validationTagEnum: ValidationTagEnum.EMPTY));
+        errorMessage: "value is not empty",
+        validationTagEnum: ValidationTagEnum.EMPTY));
+
+    return this;
   }
 
-  void notEqual() {
+  AbstractRuleBuilder
+      notEqual<TProperty extends StreamValidator, T extends Object>(
+          TProperty Function(AbstractValidator<T>) expression) {
+    var fromStreamValidator = create(expression);
+
     streamValidator.innerStream.listen((event) {
-      if (streamValidator.value == event) {
+      if (event == fromStreamValidator.value) {
         streamValidator.streamSink
             .addError(_getErrorMessage(ValidationTagEnum.NOT_EQUAL));
       } else {
@@ -167,12 +182,19 @@ extension DefaultValidatorExtensions on AbstractRuleBuilder {
     });
 
     validatorInfoList.add(ValidatorInfo(
-        errorMessage: null, validationTagEnum: ValidationTagEnum.NOT_EQUAL));
+        errorMessage: "value should not Equal",
+        validationTagEnum: ValidationTagEnum.NOT_EQUAL));
+
+    return this;
   }
 
-  void equal() {
+  AbstractRuleBuilder
+      equal<TProperty extends StreamValidator, T extends Object>(
+          TProperty Function(AbstractValidator<T>) expression) {
+    var fromStreamValidator = create(expression);
+
     streamValidator.innerStream.listen((event) {
-      if (streamValidator.value != event) {
+      if (event == fromStreamValidator.value) {
         streamValidator.streamSink
             .addError(_getErrorMessage(ValidationTagEnum.EQUAL));
       } else {
@@ -182,7 +204,10 @@ extension DefaultValidatorExtensions on AbstractRuleBuilder {
     });
 
     validatorInfoList.add(ValidatorInfo(
-        errorMessage: null, validationTagEnum: ValidationTagEnum.EQUAL));
+        errorMessage: "value should be Equal",
+        validationTagEnum: ValidationTagEnum.EQUAL));
+
+    return this;
   }
 
   AbstractRuleBuilder withMessage(Object errorMessage) {
@@ -209,5 +234,17 @@ extension DefaultValidatorExtensions on AbstractRuleBuilder {
     }
 
     return errorMessage.toString();
+  }
+
+  StreamValidator create<TProperty extends StreamValidator, T extends Object>(
+      TProperty Function(T) expression) {
+    try {
+      var instanceOfT = getIt.get<T>();
+
+      return expression(instanceOfT);
+    } catch (e) {
+      throw Exception(
+          'To use this library you should add get it to your objects.');
+    }
   }
 }
