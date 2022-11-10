@@ -52,6 +52,6 @@ abstract class AbstractValidator<T extends Object> extends IValidator<T> {
 
   void addRule<TProperty extends StreamValidator>(TProperty property) {
     _rules.add(
-        AbstractRuleBuilder(streamValidator: property, validatorInfoList: []));
+        AbstractRuleBuilder<T>(streamValidator: property, validatorInfoList: [],abstractValidator: this));
   }
 }

@@ -191,7 +191,9 @@ extension DefaultValidatorExtensions on AbstractRuleBuilder {
   AbstractRuleBuilder
       equal<TProperty extends StreamValidator, T extends Object>(
           TProperty Function(AbstractValidator<T>) expression) {
-    var fromStreamValidator = create(expression);
+
+    var fromStreamValidator =
+        expression(abstractValidator as AbstractValidator<T>);
 
     streamValidator.innerStream.listen((event) {
       if (event == fromStreamValidator.value) {
