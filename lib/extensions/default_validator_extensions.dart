@@ -1,6 +1,5 @@
 import 'package:fluent_validation/abstract/abstract_rule_builder.dart';
 import 'package:fluent_validation/enum/validation_enum.dart';
-import 'package:fluent_validation/extensions/validator_info_extensions.dart';
 import 'package:fluent_validation/model/validator_info.dart';
 
 extension DefaultValidatorExtensions on AbstractRuleBuilder {
@@ -47,7 +46,7 @@ extension DefaultValidatorExtensions on AbstractRuleBuilder {
     });
 
     validatorInfoList.add(ValidatorInfo(
-        errorMessage: null,
+        errorMessage: "email should be valid",
         validationTagEnum: ValidationTagEnum.EMAIL_ADDRESS));
 
     return this;
@@ -171,7 +170,6 @@ extension DefaultValidatorExtensions on AbstractRuleBuilder {
         errorMessage: null, validationTagEnum: ValidationTagEnum.NOT_EQUAL));
   }
 
-
   void equal() {
     streamValidator.innerStream.listen((event) {
       if (streamValidator.value != event) {
@@ -192,12 +190,11 @@ extension DefaultValidatorExtensions on AbstractRuleBuilder {
       throw Exception("should add rule before with message");
     }
 
-    for (var i = validatorInfoList.length - 1; i >= 0; --i) {
-      if (validatorInfoList[i].errorMessage == null) {
-        validatorInfoList[i].copyWith(newErrorMessage: errorMessage);
-        return this;
-      }
-    }
+    validatorInfoList[validatorInfoList.length - 1] = ValidatorInfo(
+        validationTagEnum:
+            validatorInfoList[validatorInfoList.length - 1].validationTagEnum,
+        errorMessage: errorMessage);
+
     return this;
   }
 
