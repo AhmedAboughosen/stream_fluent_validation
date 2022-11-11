@@ -22,6 +22,12 @@ class StreamValidator<T> {
 
   bool get hasError => _behaviorSubjectController.hasError;
 
+
+  void close(){
+    _behaviorSubjectController.close();
+    _innerStreamController.close();
+  }
+
   void valueChange(T t) {
     innerStreamSink.add(t);
   }

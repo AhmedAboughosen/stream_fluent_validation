@@ -109,6 +109,24 @@ extension DefaultValidatorExtensions on AbstractRuleBuilder {
     return this;
   }
 
+  AbstractRuleBuilder isEmpty() {
+    streamValidator.innerStream.listen((event) {
+      if ("${event}".isEmpty) {
+        streamValidator.streamSink
+            .addError(_getErrorMessage(ValidationTagEnum.EMPTY));
+      } else {
+        streamValidator.streamSink.addError(ValidationEnum.validated);
+        streamValidator.streamSink.add(event);
+      }
+    });
+
+    validatorInfoList.add(ValidatorInfo(
+        errorMessage: "value is not empty",
+        validationTagEnum: ValidationTagEnum.EMPTY));
+
+    return this;
+  }
+
   AbstractRuleBuilder isNull() {
     streamValidator.innerStream.listen(
       (event) {
@@ -148,28 +166,11 @@ extension DefaultValidatorExtensions on AbstractRuleBuilder {
     return this;
   }
 
-  AbstractRuleBuilder isEmpty() {
-    streamValidator.innerStream.listen((event) {
-      if ("${event}".isEmpty) {
-        streamValidator.streamSink
-            .addError(_getErrorMessage(ValidationTagEnum.EMPTY));
-      } else {
-        streamValidator.streamSink.addError(ValidationEnum.validated);
-        streamValidator.streamSink.add(event);
-      }
-    });
-
-    validatorInfoList.add(ValidatorInfo(
-        errorMessage: "value is not empty",
-        validationTagEnum: ValidationTagEnum.EMPTY));
-
-    return this;
-  }
-
   AbstractRuleBuilder
       notEqual<TProperty extends StreamValidator, T extends Object>(
           TProperty Function(AbstractValidator<T>) expression) {
-    var fromStreamValidator = create(expression);
+    var fromStreamValidator =
+        expression(abstractValidator as AbstractValidator<T>);
 
     streamValidator.innerStream.listen((event) {
       if (event == fromStreamValidator.value) {
@@ -191,12 +192,11 @@ extension DefaultValidatorExtensions on AbstractRuleBuilder {
   AbstractRuleBuilder
       equal<TProperty extends StreamValidator, T extends Object>(
           TProperty Function(AbstractValidator<T>) expression) {
-
     var fromStreamValidator =
         expression(abstractValidator as AbstractValidator<T>);
 
     streamValidator.innerStream.listen((event) {
-      if (event == fromStreamValidator.value) {
+      if (event != fromStreamValidator.value) {
         streamValidator.streamSink
             .addError(_getErrorMessage(ValidationTagEnum.EQUAL));
       } else {
@@ -208,6 +208,24 @@ extension DefaultValidatorExtensions on AbstractRuleBuilder {
     validatorInfoList.add(ValidatorInfo(
         errorMessage: "value should be Equal",
         validationTagEnum: ValidationTagEnum.EQUAL));
+
+    return this;
+  }
+
+  AbstractRuleBuilder must<TProperty extends StreamValidator, T extends Object>(
+      bool Function(Object) expression) {
+    streamValidator.innerStream.listen((event) {
+      if (!expression(event)) {
+        streamValidator.streamSink
+            .addError(_getErrorMessage(ValidationTagEnum.MUST));
+      } else {
+        streamValidator.streamSink.addError(ValidationEnum.validated);
+        streamValidator.streamSink.add(event);
+      }
+    });
+
+    validatorInfoList.add(ValidatorInfo(
+        errorMessage: "invalid", validationTagEnum: ValidationTagEnum.MUST));
 
     return this;
   }
@@ -238,15 +256,5 @@ extension DefaultValidatorExtensions on AbstractRuleBuilder {
     return errorMessage.toString();
   }
 
-  StreamValidator create<TProperty extends StreamValidator, T extends Object>(
-      TProperty Function(T) expression) {
-    try {
-      var instanceOfT = getIt.get<T>();
 
-      return expression(instanceOfT);
-    } catch (e) {
-      throw Exception(
-          'To use this library you should add get it to your objects.');
-    }
-  }
 }

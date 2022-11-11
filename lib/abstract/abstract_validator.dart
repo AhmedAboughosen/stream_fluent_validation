@@ -1,12 +1,17 @@
 import 'package:fluent_validation/model/stream_validator.dart';
 
 import '../enum/validation_enum.dart';
-import '../fluent_validation.dart';
 import '../validator.dart';
 import 'abstract_rule_builder.dart';
 
 abstract class AbstractValidator<T extends Object> extends IValidator<T> {
   final List<AbstractRuleBuilder> _rules = [];
+
+  void dispose() {
+    for (var i = 0; i < _rules.length; ++i) {
+      _rules[i].streamValidator.close();
+    }
+  }
 
   @override
   bool validate() {
@@ -33,25 +38,15 @@ abstract class AbstractValidator<T extends Object> extends IValidator<T> {
 
     var streamValidator = expression(this);
 
-    addRule(streamValidator);
+    _addRule(streamValidator);
 
     return _rules[_rules.length - 1];
   }
 
-  StreamValidator create<TProperty extends StreamValidator>(
-      TProperty Function(T) expression) {
-    try {
-      var instanceOfT = getIt.get<T>();
-
-      return expression(instanceOfT);
-    } catch (e) {
-      throw Exception(
-          'To use this library you should add get it to your objects.');
-    }
-  }
-
-  void addRule<TProperty extends StreamValidator>(TProperty property) {
-    _rules.add(
-        AbstractRuleBuilder<T>(streamValidator: property, validatorInfoList: [],abstractValidator: this));
+  void _addRule<TProperty extends StreamValidator>(TProperty property) {
+    _rules.add(AbstractRuleBuilder<T>(
+        streamValidator: property,
+        validatorInfoList: [],
+        abstractValidator: this));
   }
 }

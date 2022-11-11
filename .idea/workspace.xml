@@ -10,10 +10,10 @@
     <select />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="47675412-3667-4f43-aac7-beab77797cba" name="Default Changelist" comment="issue fo equal stream">
+    <list default="true" id="47675412-3667-4f43-aac7-beab77797cba" name="Default Changelist" comment="issue fo equal stream v2">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/abstract/abstract_rule_builder.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/abstract/abstract_rule_builder.dart" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/lib/abstract/abstract_validator.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/abstract/abstract_validator.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/enum/validation_enum.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/enum/validation_enum.dart" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/lib/extensions/default_validator_extensions.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/extensions/default_validator_extensions.dart" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -89,7 +89,14 @@
       <option name="project" value="LOCAL" />
       <updated>1668072844131</updated>
     </task>
-    <option name="localTasksCounter" value="6" />
+    <task id="LOCAL-00006" summary="issue fo equal stream v2">
+      <created>1668073686129</created>
+      <option name="number" value="00006" />
+      <option name="presentableId" value="LOCAL-00006" />
+      <option name="project" value="LOCAL" />
+      <updated>1668073686129</updated>
+    </task>
+    <option name="localTasksCounter" value="7" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -109,7 +116,8 @@
     <MESSAGE value="return false if not vaildated" />
     <MESSAGE value="fixing with message error" />
     <MESSAGE value="issue fo equal stream" />
-    <option name="LAST_COMMIT_MESSAGE" value="issue fo equal stream" />
+    <MESSAGE value="issue fo equal stream v2" />
+    <option name="LAST_COMMIT_MESSAGE" value="issue fo equal stream v2" />
   </component>
   <component name="WindowStateProjectService">
     <state x="690" y="175" key="CheckoutDialog.Title" timestamp="1667893068040">
@@ -132,11 +140,11 @@
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="690" y="175" key="ImportDialog.Title/0.0.1920.1040@0.0.1920.1040" timestamp="1667893036049" />
-    <state x="451" y="183" key="Vcs.Push.Dialog.v2" timestamp="1668072845399">
+    <state x="451" y="183" key="Vcs.Push.Dialog.v2" timestamp="1668073687067">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="361" y="145" key="Vcs.Push.Dialog.v2/0.0.1536.824@0.0.1536.824" timestamp="1667842477590" />
-    <state x="451" y="183" key="Vcs.Push.Dialog.v2/0.0.1920.1040@0.0.1920.1040" timestamp="1668072845399" />
+    <state x="451" y="183" key="Vcs.Push.Dialog.v2/0.0.1920.1040@0.0.1920.1040" timestamp="1668073687067" />
     <state x="696" y="421" key="git4idea.remote.GitConfigureRemotesDialog" timestamp="1667892717704">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
