@@ -7,12 +7,6 @@ import 'abstract_rule_builder.dart';
 abstract class AbstractValidator<T extends Object> extends IValidator<T> {
   final List<AbstractRuleBuilder> _rules = [];
 
-  void dispose() {
-    for (var i = 0; i < _rules.length; ++i) {
-      _rules[i].streamValidator.close();
-    }
-  }
-
   @override
   bool validate() {
     for (var i = 0; i < _rules.length; ++i) {

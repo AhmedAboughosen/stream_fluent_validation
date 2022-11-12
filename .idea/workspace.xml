@@ -10,8 +10,13 @@
     <select />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="47675412-3667-4f43-aac7-beab77797cba" name="Default Changelist" comment="add close stream">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+    <list default="true" id="47675412-3667-4f43-aac7-beab77797cba" name="Default Changelist" comment="fixing bug for equality stream">
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/Dart_Packages.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/Dart_Packages.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.packages" beforeDir="false" afterPath="$PROJECT_DIR$/.packages" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/abstract/abstract_validator.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/abstract/abstract_validator.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/model/stream_validator.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/model/stream_validator.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pubspec.lock" beforeDir="false" afterPath="$PROJECT_DIR$/pubspec.lock" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pubspec.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/pubspec.yaml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -100,7 +105,14 @@
       <option name="project" value="LOCAL" />
       <updated>1668158787792</updated>
     </task>
-    <option name="localTasksCounter" value="8" />
+    <task id="LOCAL-00008" summary="fixing bug for equality stream">
+      <created>1668290407406</created>
+      <option name="number" value="00008" />
+      <option name="presentableId" value="LOCAL-00008" />
+      <option name="project" value="LOCAL" />
+      <updated>1668290407406</updated>
+    </task>
+    <option name="localTasksCounter" value="9" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -122,7 +134,8 @@
     <MESSAGE value="issue fo equal stream" />
     <MESSAGE value="issue fo equal stream v2" />
     <MESSAGE value="add close stream" />
-    <option name="LAST_COMMIT_MESSAGE" value="add close stream" />
+    <MESSAGE value="fixing bug for equality stream" />
+    <option name="LAST_COMMIT_MESSAGE" value="fixing bug for equality stream" />
   </component>
   <component name="WindowStateProjectService">
     <state x="690" y="175" key="CheckoutDialog.Title" timestamp="1667893068040">

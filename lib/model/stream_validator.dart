@@ -1,12 +1,14 @@
 import 'dart:async';
 
 import 'package:rxdart/rxdart.dart';
+import 'package:stream_bloc/src/stream_base.dart';
 
-class StreamValidator<T> {
+class StreamValidator<T> extends StreamBase<T>{
   final _behaviorSubjectController = BehaviorSubject<T>(sync: true);
   final _innerStreamController = BehaviorSubject<T>(sync: true);
 
-  ValueStream<T> get stream => _behaviorSubjectController.stream;
+  @override
+  ValueStream<T> get listener => _behaviorSubjectController.stream;
 
   ValueStream<T> get innerStream => _innerStreamController.stream;
 
@@ -23,7 +25,8 @@ class StreamValidator<T> {
   bool get hasError => _behaviorSubjectController.hasError;
 
 
-  void close(){
+  @override
+  void onClose(){
     _behaviorSubjectController.close();
     _innerStreamController.close();
   }

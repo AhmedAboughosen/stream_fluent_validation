@@ -121,6 +121,15 @@ packages:
       url: "https://pub.dartlang.org"
     source: hosted
     version: "1.10.0"
+  stream_bloc:
+    dependency: "direct main"
+    description:
+      path: "."
+      ref: HEAD
+      resolved-ref: "8601aa5c3ae3aea48de69932d571d1f298932186"
+      url: "git@github.com:AhmedAboughosen/stream_bloc.git"
+    source: git
+    version: "0.0.1"
   stream_channel:
     dependency: transitive
     description:
