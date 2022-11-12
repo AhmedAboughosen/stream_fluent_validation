@@ -3,7 +3,6 @@ import 'package:fluent_validation/enum/validation_enum.dart';
 import 'package:fluent_validation/model/validator_info.dart';
 
 import '../abstract/abstract_validator.dart';
-import '../fluent_validation.dart';
 import '../model/stream_validator.dart';
 
 extension DefaultValidatorExtensions on AbstractRuleBuilder {
@@ -172,6 +171,16 @@ extension DefaultValidatorExtensions on AbstractRuleBuilder {
     var fromStreamValidator =
         expression(abstractValidator as AbstractValidator<T>);
 
+    fromStreamValidator.innerStream.listen((event) {
+      if (streamValidator.value == event) {
+        streamValidator.streamSink
+            .addError(_getErrorMessage(ValidationTagEnum.NOT_EQUAL));
+      } else {
+        streamValidator.streamSink.addError(ValidationEnum.validated);
+        streamValidator.streamSink.add(streamValidator.value);
+      }
+    });
+
     streamValidator.innerStream.listen((event) {
       if (event == fromStreamValidator.value) {
         streamValidator.streamSink
@@ -194,6 +203,16 @@ extension DefaultValidatorExtensions on AbstractRuleBuilder {
           TProperty Function(AbstractValidator<T>) expression) {
     var fromStreamValidator =
         expression(abstractValidator as AbstractValidator<T>);
+
+    fromStreamValidator.innerStream.listen((event) {
+      if (streamValidator.value != event) {
+        streamValidator.streamSink
+            .addError(_getErrorMessage(ValidationTagEnum.EQUAL));
+      } else {
+        streamValidator.streamSink.addError(ValidationEnum.validated);
+        streamValidator.streamSink.add(streamValidator.value);
+      }
+    });
 
     streamValidator.innerStream.listen((event) {
       if (event != fromStreamValidator.value) {
@@ -255,6 +274,4 @@ extension DefaultValidatorExtensions on AbstractRuleBuilder {
 
     return errorMessage.toString();
   }
-
-
 }
