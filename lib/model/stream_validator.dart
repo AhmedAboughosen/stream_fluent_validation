@@ -1,7 +1,7 @@
 import 'dart:async';
 
+import 'package:live_stream_base/live_stream.dart';
 import 'package:rxdart/rxdart.dart';
-import 'package:stream_bloc/src/stream_base.dart';
 
 class StreamValidator<T> extends StreamBase<T>{
   final _behaviorSubjectController = BehaviorSubject<T>(sync: true);
@@ -12,7 +12,7 @@ class StreamValidator<T> extends StreamBase<T>{
 
   ValueStream<T> get innerStream => _innerStreamController.stream;
 
-  bool get hasValue => _behaviorSubjectController.hasValue;
+  bool get hasState => _behaviorSubjectController.hasValue;
 
   StreamSink<T> get streamSink => _behaviorSubjectController.sink;
 
@@ -20,10 +20,9 @@ class StreamValidator<T> extends StreamBase<T>{
 
   Object get error => _behaviorSubjectController.error;
 
-  T get value => _behaviorSubjectController.value;
+  T get state => _behaviorSubjectController.value;
 
   bool get hasError => _behaviorSubjectController.hasError;
-
 
   @override
   void onClose(){
@@ -34,4 +33,7 @@ class StreamValidator<T> extends StreamBase<T>{
   void valueChange(T t) {
     innerStreamSink.add(t);
   }
+
+
+
 }

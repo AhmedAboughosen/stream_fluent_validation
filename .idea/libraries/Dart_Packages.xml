@@ -72,6 +72,13 @@
             </list>
           </value>
         </entry>
+        <entry key="live_stream_base">
+          <value>
+            <list>
+              <option value="C:/flutterVersions/flutter/.pub-cache/git/live_stream_base-4d7f548ee1af63f46f825c8f7a2e5d2756eaa8ae/lib" />
+            </list>
+          </value>
+        </entry>
         <entry key="matcher">
           <value>
             <list>
@@ -128,13 +135,6 @@
             </list>
           </value>
         </entry>
-        <entry key="stream_bloc">
-          <value>
-            <list>
-              <option value="C:/flutterVersions/flutter/.pub-cache/git/stream_bloc-8601aa5c3ae3aea48de69932d571d1f298932186/lib" />
-            </list>
-          </value>
-        </entry>
         <entry key="stream_channel">
           <value>
             <list>
@@ -173,7 +173,7 @@
       </option>
     </properties>
     <CLASSES>
-      <root url="file://C:/flutterVersions/flutter/.pub-cache/git/stream_bloc-8601aa5c3ae3aea48de69932d571d1f298932186/lib" />
+      <root url="file://C:/flutterVersions/flutter/.pub-cache/git/live_stream_base-4d7f548ee1af63f46f825c8f7a2e5d2756eaa8ae/lib" />
       <root url="file://C:/flutterVersions/flutter/.pub-cache/hosted/pub.dartlang.org/async-2.8.2/lib" />
       <root url="file://C:/flutterVersions/flutter/.pub-cache/hosted/pub.dartlang.org/boolean_selector-2.1.0/lib" />
       <root url="file://C:/flutterVersions/flutter/.pub-cache/hosted/pub.dartlang.org/characters-1.2.0/lib" />
