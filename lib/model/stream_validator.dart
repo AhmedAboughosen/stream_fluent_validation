@@ -21,7 +21,7 @@ class StreamValidator<T> extends StreamBase<T> {
 
   Object get error => _outerStream.error;
 
-  T get state => _outerStream.value;
+  T? get state => _outerStream.valueOrNull;
 
   bool get hasError => _outerStream.hasError;
 
