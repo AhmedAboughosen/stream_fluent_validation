@@ -26,10 +26,6 @@ abstract class AbstractValidator<T extends Object> extends IValidator<T> {
   /// Property should extends Stream Validator
   AbstractRuleBuilder ruleFor<TProperty extends StreamValidator>(
       TProperty Function(AbstractValidator<T>) expression) {
-    if (expression == null) {
-      throw Exception("expression Function can't be null");
-    }
-
     var streamValidator = expression(this);
 
     _addRule(streamValidator);
@@ -39,8 +35,9 @@ abstract class AbstractValidator<T extends Object> extends IValidator<T> {
 
   void _addRule<TProperty extends StreamValidator>(TProperty property) {
     _rules.add(AbstractRuleBuilder<T>(
-        streamValidator: property,
-        validatorInfoList: [],
-        abstractValidator: this));
+      streamValidator: property,
+      validatorInfoList: [],
+      abstractValidator: this,
+    ));
   }
 }

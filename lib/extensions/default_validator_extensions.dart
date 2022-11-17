@@ -22,7 +22,7 @@ extension DefaultValidatorExtensions on AbstractRuleBuilder {
     );
 
     validatorInfoList.add(ValidatorInfo(
-        errorMessage: "state is not matches",
+        errorMessage: "value is not matches",
         validationTagEnum: ValidationTagEnum.MATCHES));
 
     return this;
@@ -63,7 +63,7 @@ extension DefaultValidatorExtensions on AbstractRuleBuilder {
     });
 
     validatorInfoList.add(ValidatorInfo(
-        errorMessage: "state is Number",
+        errorMessage: "value is Number",
         validationTagEnum: ValidationTagEnum.SHOULD_BE_NUMBER));
     return this;
   }
@@ -82,7 +82,7 @@ extension DefaultValidatorExtensions on AbstractRuleBuilder {
     });
 
     validatorInfoList.add(ValidatorInfo(
-        errorMessage: "state should be between ${from} and ${to}",
+        errorMessage: "value should be between ${from} and ${to}",
         validationTagEnum: ValidationTagEnum.BETWEEN));
 
     return this;
@@ -102,7 +102,7 @@ extension DefaultValidatorExtensions on AbstractRuleBuilder {
     });
 
     validatorInfoList.add(ValidatorInfo(
-        errorMessage: "state should not be empty",
+        errorMessage: "value should not be empty",
         validationTagEnum: ValidationTagEnum.NOT_EMPTY));
 
     return this;
@@ -110,7 +110,7 @@ extension DefaultValidatorExtensions on AbstractRuleBuilder {
 
   AbstractRuleBuilder isEmpty() {
     streamValidator.innerStream.listen((event) {
-      if ("${event}".isEmpty) {
+      if (("$event".isNotEmpty)) {
         streamValidator.streamSink
             .addError(_getErrorMessage(ValidationTagEnum.EMPTY));
       } else {
@@ -120,7 +120,7 @@ extension DefaultValidatorExtensions on AbstractRuleBuilder {
     });
 
     validatorInfoList.add(ValidatorInfo(
-        errorMessage: "state is not empty",
+        errorMessage: "value is not empty",
         validationTagEnum: ValidationTagEnum.EMPTY));
 
     return this;
@@ -140,7 +140,7 @@ extension DefaultValidatorExtensions on AbstractRuleBuilder {
     );
 
     validatorInfoList.add(ValidatorInfo(
-        errorMessage: "state is not  null",
+        errorMessage: "value is not  null",
         validationTagEnum: ValidationTagEnum.IS_NULL));
 
     return this;
@@ -160,7 +160,7 @@ extension DefaultValidatorExtensions on AbstractRuleBuilder {
     );
 
     validatorInfoList.add(ValidatorInfo(
-        errorMessage: "state is   null",
+        errorMessage: "value  is null",
         validationTagEnum: ValidationTagEnum.IS_NOT_NULL));
     return this;
   }
@@ -168,6 +168,7 @@ extension DefaultValidatorExtensions on AbstractRuleBuilder {
   AbstractRuleBuilder
       notEqual<TProperty extends StreamValidator, T extends Object>(
           TProperty Function(AbstractValidator<T>) expression) {
+
     var fromStreamValidator =
         expression(abstractValidator as AbstractValidator<T>);
 
@@ -177,7 +178,7 @@ extension DefaultValidatorExtensions on AbstractRuleBuilder {
             .addError(_getErrorMessage(ValidationTagEnum.NOT_EQUAL));
       } else {
         streamValidator.streamSink.addError(ValidationEnum.validated);
-        streamValidator.streamSink.add(streamValidator.state);
+        streamValidator.streamSink.add(event);
       }
     });
 
@@ -192,7 +193,7 @@ extension DefaultValidatorExtensions on AbstractRuleBuilder {
     });
 
     validatorInfoList.add(ValidatorInfo(
-        errorMessage: "state should not Equal",
+        errorMessage: "value should not Equal",
         validationTagEnum: ValidationTagEnum.NOT_EQUAL));
 
     return this;
@@ -225,7 +226,7 @@ extension DefaultValidatorExtensions on AbstractRuleBuilder {
     });
 
     validatorInfoList.add(ValidatorInfo(
-        errorMessage: "state should be Equal",
+        errorMessage: "value should be Equal",
         validationTagEnum: ValidationTagEnum.EQUAL));
 
     return this;

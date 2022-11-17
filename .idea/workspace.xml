@@ -10,10 +10,12 @@
     <select />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="47675412-3667-4f43-aac7-beab77797cba" name="Default Changelist" comment="add stream bloc library">
+    <list default="true" id="47675412-3667-4f43-aac7-beab77797cba" name="Default Changelist" comment="update live stream bases">
       <change beforePath="$PROJECT_DIR$/.idea/libraries/Dart_Packages.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/Dart_Packages.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.packages" beforeDir="false" afterPath="$PROJECT_DIR$/.packages" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/abstract/abstract_validator.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/abstract/abstract_validator.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/extensions/default_validator_extensions.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/extensions/default_validator_extensions.dart" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/lib/model/stream_validator.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/model/stream_validator.dart" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/pubspec.lock" beforeDir="false" afterPath="$PROJECT_DIR$/pubspec.lock" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/pubspec.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/pubspec.yaml" afterDir="false" />
@@ -119,7 +121,14 @@
       <option name="project" value="LOCAL" />
       <updated>1668290589933</updated>
     </task>
-    <option name="localTasksCounter" value="10" />
+    <task id="LOCAL-00010" summary="update live stream bases">
+      <created>1668587455064</created>
+      <option name="number" value="00010" />
+      <option name="presentableId" value="LOCAL-00010" />
+      <option name="project" value="LOCAL" />
+      <updated>1668587455064</updated>
+    </task>
+    <option name="localTasksCounter" value="11" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -143,7 +152,8 @@
     <MESSAGE value="add close stream" />
     <MESSAGE value="fixing bug for equality stream" />
     <MESSAGE value="add stream bloc library" />
-    <option name="LAST_COMMIT_MESSAGE" value="add stream bloc library" />
+    <MESSAGE value="update live stream bases" />
+    <option name="LAST_COMMIT_MESSAGE" value="update live stream bases" />
   </component>
   <component name="WindowStateProjectService">
     <state x="690" y="175" key="CheckoutDialog.Title" timestamp="1667893068040">
@@ -166,11 +176,15 @@
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="690" y="175" key="ImportDialog.Title/0.0.1920.1040@0.0.1920.1040" timestamp="1667893036049" />
-    <state x="361" y="145" key="Vcs.Push.Dialog.v2" timestamp="1668290591004">
-      <screen x="0" y="0" width="1536" height="824" />
+    <state x="451" y="183" key="Vcs.Push.Dialog.v2" timestamp="1668587456368">
+      <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="361" y="145" key="Vcs.Push.Dialog.v2/0.0.1536.824@0.0.1536.824" timestamp="1668290591004" />
-    <state x="451" y="183" key="Vcs.Push.Dialog.v2/0.0.1920.1040@0.0.1920.1040" timestamp="1668073687067" />
+    <state x="451" y="183" key="Vcs.Push.Dialog.v2/0.0.1920.1040@0.0.1920.1040" timestamp="1668587456368" />
+    <state x="777" y="434" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2" timestamp="1668587307792">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state x="777" y="434" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2/0.0.1920.1040@0.0.1920.1040" timestamp="1668587307792" />
     <state x="696" y="421" key="git4idea.remote.GitConfigureRemotesDialog" timestamp="1667892717704">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>

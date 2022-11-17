@@ -72,10 +72,10 @@
             </list>
           </value>
         </entry>
-        <entry key="live_stream_base">
+        <entry key="live_stream">
           <value>
             <list>
-              <option value="C:/flutterVersions/flutter/.pub-cache/git/live_stream_base-4d7f548ee1af63f46f825c8f7a2e5d2756eaa8ae/lib" />
+              <option value="C:/flutterVersions/flutter/.pub-cache/git/live_stream-bf565cbac2916d0a45906f65e98d091b1d8c7965/lib" />
             </list>
           </value>
         </entry>
@@ -97,6 +97,13 @@
           <value>
             <list>
               <option value="C:/flutterVersions/flutter/.pub-cache/hosted/pub.dartlang.org/meta-1.7.0/lib" />
+            </list>
+          </value>
+        </entry>
+        <entry key="nested">
+          <value>
+            <list>
+              <option value="C:/flutterVersions/flutter/.pub-cache/hosted/pub.dartlang.org/nested-1.0.0/lib" />
             </list>
           </value>
         </entry>
@@ -173,7 +180,7 @@
       </option>
     </properties>
     <CLASSES>
-      <root url="file://C:/flutterVersions/flutter/.pub-cache/git/live_stream_base-4d7f548ee1af63f46f825c8f7a2e5d2756eaa8ae/lib" />
+      <root url="file://C:/flutterVersions/flutter/.pub-cache/git/live_stream-bf565cbac2916d0a45906f65e98d091b1d8c7965/lib" />
       <root url="file://C:/flutterVersions/flutter/.pub-cache/hosted/pub.dartlang.org/async-2.8.2/lib" />
       <root url="file://C:/flutterVersions/flutter/.pub-cache/hosted/pub.dartlang.org/boolean_selector-2.1.0/lib" />
       <root url="file://C:/flutterVersions/flutter/.pub-cache/hosted/pub.dartlang.org/characters-1.2.0/lib" />
@@ -185,6 +192,7 @@
       <root url="file://C:/flutterVersions/flutter/.pub-cache/hosted/pub.dartlang.org/matcher-0.12.11/lib" />
       <root url="file://C:/flutterVersions/flutter/.pub-cache/hosted/pub.dartlang.org/material_color_utilities-0.1.4/lib" />
       <root url="file://C:/flutterVersions/flutter/.pub-cache/hosted/pub.dartlang.org/meta-1.7.0/lib" />
+      <root url="file://C:/flutterVersions/flutter/.pub-cache/hosted/pub.dartlang.org/nested-1.0.0/lib" />
       <root url="file://C:/flutterVersions/flutter/.pub-cache/hosted/pub.dartlang.org/path-1.8.1/lib" />
       <root url="file://C:/flutterVersions/flutter/.pub-cache/hosted/pub.dartlang.org/rxdart-0.27.5/lib" />
       <root url="file://C:/flutterVersions/flutter/.pub-cache/hosted/pub.dartlang.org/source_span-1.8.2/lib" />

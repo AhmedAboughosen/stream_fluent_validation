@@ -1,39 +1,36 @@
 import 'dart:async';
 
-import 'package:live_stream_base/live_stream.dart';
+import 'package:live_stream/src/live_stream.dart';
 import 'package:rxdart/rxdart.dart';
 
-class StreamValidator<T> extends StreamBase<T>{
-  final _behaviorSubjectController = BehaviorSubject<T>(sync: true);
+class StreamValidator<T> extends StreamBase<T> {
+  final _outerStream = BehaviorSubject<T>(sync: true);
   final _innerStreamController = BehaviorSubject<T>(sync: true);
 
   @override
-  ValueStream<T> get listener => _behaviorSubjectController.stream;
+  ValueStream<T> get listener => _outerStream.stream;
 
   ValueStream<T> get innerStream => _innerStreamController.stream;
 
-  bool get hasState => _behaviorSubjectController.hasValue;
+  bool get hasState => _outerStream.hasValue;
 
-  StreamSink<T> get streamSink => _behaviorSubjectController.sink;
+  StreamSink<T> get streamSink => _outerStream.sink;
 
   StreamSink<T> get innerStreamSink => _innerStreamController.sink;
 
-  Object get error => _behaviorSubjectController.error;
+  Object get error => _outerStream.error;
 
-  T get state => _behaviorSubjectController.value;
+  T get state => _outerStream.value;
 
-  bool get hasError => _behaviorSubjectController.hasError;
+  bool get hasError => _outerStream.hasError;
 
   @override
-  void onClose(){
-    _behaviorSubjectController.close();
+  void onClose() {
+    _outerStream.close();
     _innerStreamController.close();
   }
 
   void valueChange(T t) {
     innerStreamSink.add(t);
   }
-
-
-
 }
