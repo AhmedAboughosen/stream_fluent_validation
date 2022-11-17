@@ -3,12 +3,13 @@ import 'dart:async';
 import 'package:live_stream/src/live_stream.dart';
 import 'package:rxdart/rxdart.dart';
 
+
 class StreamValidator<T> extends StreamBase<T> {
   final _outerStream = BehaviorSubject<T>(sync: true);
   final _innerStreamController = BehaviorSubject<T>(sync: true);
 
   @override
-  ValueStream<T> get listener => _outerStream.stream;
+  ValueStream<T> get stream => _outerStream.stream;
 
   ValueStream<T> get innerStream => _innerStreamController.stream;
 

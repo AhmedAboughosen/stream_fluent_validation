@@ -75,7 +75,7 @@
         <entry key="live_stream">
           <value>
             <list>
-              <option value="C:/flutterVersions/flutter/.pub-cache/git/live_stream-bf565cbac2916d0a45906f65e98d091b1d8c7965/lib" />
+              <option value="C:/flutterVersions/flutter/.pub-cache/git/live_stream-44cb3f31aa16d199f2598a0a721e438f674ba282/lib" />
             </list>
           </value>
         </entry>
@@ -180,7 +180,7 @@
       </option>
     </properties>
     <CLASSES>
-      <root url="file://C:/flutterVersions/flutter/.pub-cache/git/live_stream-bf565cbac2916d0a45906f65e98d091b1d8c7965/lib" />
+      <root url="file://C:/flutterVersions/flutter/.pub-cache/git/live_stream-44cb3f31aa16d199f2598a0a721e438f674ba282/lib" />
       <root url="file://C:/flutterVersions/flutter/.pub-cache/hosted/pub.dartlang.org/async-2.8.2/lib" />
       <root url="file://C:/flutterVersions/flutter/.pub-cache/hosted/pub.dartlang.org/boolean_selector-2.1.0/lib" />
       <root url="file://C:/flutterVersions/flutter/.pub-cache/hosted/pub.dartlang.org/characters-1.2.0/lib" />
