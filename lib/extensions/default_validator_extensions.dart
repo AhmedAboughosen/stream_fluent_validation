@@ -118,19 +118,17 @@ extension DefaultValidatorExtensions on AbstractRuleBuilder {
 
     var fromStreamValidator = compareToValidation.streamValidator;
 
-    if (!fromStreamValidator.hasListener) {
-      fromStreamValidator.innerStream.listen((event) {
-        if (streamValidator.state == event) {
-          streamValidator.streamSink
-              .addError(_getErrorMessage(validationTagEnum));
-        } else {
-          streamValidator.streamSink.addError(ValidationEnum.validated);
-          streamValidator.streamSink.add(event);
-        }
-      });
-    }
+    fromStreamValidator.innerStream.listen((event) {
+      if (streamValidator.stateOfInnerStream == event) {
+        streamValidator.streamSink
+            .addError(_getErrorMessage(validationTagEnum));
+      } else {
+        streamValidator.streamSink.addError(ValidationEnum.validated);
+        streamValidator.streamSink.add(event);
+      }
+    });
 
-    if (event == fromStreamValidator.state) {
+    if (event == fromStreamValidator.stateOfInnerStream) {
       streamValidator.streamSink.addError(_getErrorMessage(validationTagEnum));
     } else {
       streamValidator.streamSink.addError(ValidationEnum.validated);
