@@ -20,6 +20,9 @@ class StreamValidator<T extends Object> extends StreamBase<T> {
 
   T? get state => _outerStream.valueOrNull;
 
+
+  T? get stateOfInnerStream => _innerStream.valueOrNull;
+
   bool get hasError => _outerStream.hasError;
 
   bool get hasState => _outerStream.hasValue;
