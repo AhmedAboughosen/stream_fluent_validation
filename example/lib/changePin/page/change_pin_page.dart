@@ -1,11 +1,11 @@
 import 'package:flutter/material.dart';
 
-import '../controller/login_controller.dart';
+import '../controller/change_pin_controller.dart';
 
-var loginController = LoginController();
+var changePinController = ChangePinController();
 
-class LoginPage extends StatelessWidget {
-  const LoginPage({Key? key}) : super(key: key);
+class ChangePinPage extends StatelessWidget {
+  const ChangePinPage({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -16,12 +16,12 @@ class LoginPage extends StatelessWidget {
             SizedBox(
               height: 30,
             ),
-            EmailInput(
+            NewPinInput(
             ),
             SizedBox(
               height: 30,
             ),
-            PasswordInput(),
+            ConfirmPinInput(),
             SizedBox(
               height: 30,
             ),
@@ -31,38 +31,37 @@ class LoginPage extends StatelessWidget {
   }
 }
 
-class EmailInput extends StatelessWidget {
-  const EmailInput({Key? key}) : super(key: key);
+class NewPinInput extends StatelessWidget {
+  const NewPinInput({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) => StreamBuilder(
-        stream: loginController.loginValidation.email.stream,
+        stream: changePinController.changePinValidation.newPin.stream,
         builder: (context, snap) {
           return TextField(
-            keyboardType: TextInputType.emailAddress,
-            onChanged: loginController.loginValidation.email.valueChange,
+            keyboardType: TextInputType.number,
+            onChanged: changePinController.changePinValidation.newPin.valueChange,
             decoration: InputDecoration(
-                labelText: "Email address",
-                hintText: "you@example.com",
+                labelText: "new Pin",
+                hintText: "****",
                 errorText: snap.hasError ? "${snap.error}" : null),
           );
         },
       );
 }
 
-class PasswordInput extends StatelessWidget {
-  const PasswordInput({Key? key}) : super(key: key);
+class ConfirmPinInput extends StatelessWidget {
+  const ConfirmPinInput({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) => StreamBuilder(
-        stream: loginController.loginValidation.password.stream,
+        stream: changePinController.changePinValidation.confirmPin.stream,
         builder: (context, snap) {
           return TextField(
             keyboardType: TextInputType.number,
-            onChanged: loginController.loginValidation.password.valueChange,
-            obscureText: true,
+            onChanged: changePinController.changePinValidation.confirmPin.valueChange,
             decoration: InputDecoration(
-                labelText: "Password",
+                labelText: "confirm Pin",
                 hintText: "******",
                 errorText: snap.hasError ? "${snap.error}" : null),
           );
@@ -77,7 +76,7 @@ class SubmitButton extends StatelessWidget {
   Widget build(BuildContext context) {
     return RaisedButton(
       onPressed: () {
-        loginController.login();
+        changePinController.changePin();
       },
       color: Colors.blue,
       child: const Text(

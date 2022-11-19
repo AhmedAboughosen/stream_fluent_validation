@@ -51,14 +51,14 @@ extension DefaultValidatorExtensions on AbstractRuleBuilder {
               }
             case ValidationTagEnum.NOT_EQUAL:
               {
-                _sendEventToClientForCompareConditions(
+                _sendEventToClientForNotEqualConditions(
                     i, event, ValidationTagEnum.NOT_EQUAL);
 
                 break;
               }
             case ValidationTagEnum.EQUAL:
               {
-                _sendEventToClientForCompareConditions(
+                _sendEventToClientForEqualConditions(
                     i, event, ValidationTagEnum.EQUAL);
 
                 break;
@@ -86,7 +86,34 @@ extension DefaultValidatorExtensions on AbstractRuleBuilder {
     }
   }
 
-  void _sendEventToClientForCompareConditions(
+  void _sendEventToClientForEqualConditions(
+      int index, Object event, ValidationTagEnum validationTagEnum) {
+    CompareToValidation compareToValidation =
+        validatorInfoList[index].abstractValidation as CompareToValidation;
+
+    var fromStreamValidator = compareToValidation.streamValidator;
+
+    if (!fromStreamValidator.hasListener) {
+      fromStreamValidator.innerStream.listen((event) {
+        if (streamValidator.state != event) {
+          streamValidator.streamSink
+              .addError(_getErrorMessage(validationTagEnum));
+        } else {
+          streamValidator.streamSink.addError(ValidationEnum.validated);
+          streamValidator.streamSink.add(event);
+        }
+      });
+    }
+
+    if (event != fromStreamValidator.state) {
+      streamValidator.streamSink.addError(_getErrorMessage(validationTagEnum));
+    } else {
+      streamValidator.streamSink.addError(ValidationEnum.validated);
+      streamValidator.streamSink.add(event);
+    }
+  }
+
+  void _sendEventToClientForNotEqualConditions(
       int index, Object event, ValidationTagEnum validationTagEnum) {
     CompareToValidation compareToValidation =
         validatorInfoList[index].abstractValidation as CompareToValidation;
