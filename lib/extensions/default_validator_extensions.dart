@@ -5,11 +5,14 @@ import 'package:fluent_validation/model/validator_info.dart';
 import '../abstract/abstract_validator.dart';
 import '../model/between_number_validation.dart';
 import '../model/compare_to_validation.dart';
+import '../model/compare_to_value_validation.dart';
 import '../model/must_validation.dart';
 import '../model/reg_rxp.dart';
 import '../model/stream_validator.dart';
 
 extension DefaultValidatorExtensions on AbstractRuleBuilder {
+  ///when any change accrued on data inner stream will fire.
+  ///
   void observe() {
     streamValidator.innerStream.listen(
       (event) {
@@ -20,33 +23,41 @@ extension DefaultValidatorExtensions on AbstractRuleBuilder {
           switch (currentValidationTagEnum) {
             case ValidationTagEnum.MATCHES:
               {
-                _sendEventToClient(i, event, ValidationTagEnum.MATCHES);
+                if (!_sendEventToClient(i, event, ValidationTagEnum.MATCHES))
+                  return;
                 break;
               }
             case ValidationTagEnum.EMAIL_ADDRESS:
               {
-                _sendEventToClient(i, event, ValidationTagEnum.EMAIL_ADDRESS);
+                if (!_sendEventToClient(
+                    i, event, ValidationTagEnum.EMAIL_ADDRESS)) return;
                 break;
               }
             case ValidationTagEnum.SHOULD_BE_NUMBER:
               {
-                _sendEventToClient(
-                    i, event, ValidationTagEnum.SHOULD_BE_NUMBER);
+                if (!_sendEventToClient(
+                    i, event, ValidationTagEnum.SHOULD_BE_NUMBER)) return;
                 break;
               }
             case ValidationTagEnum.BETWEEN:
               {
-                _sendEventToClient(i, event, ValidationTagEnum.BETWEEN);
+                if (!_sendEventToClient(i, event, ValidationTagEnum.BETWEEN))
+                  return;
+
                 break;
               }
             case ValidationTagEnum.NOT_EMPTY:
               {
-                _sendEventToClient(i, event, ValidationTagEnum.NOT_EMPTY);
+                if (!_sendEventToClient(i, event, ValidationTagEnum.NOT_EMPTY))
+                  return;
+
                 break;
               }
             case ValidationTagEnum.EMPTY:
               {
-                _sendEventToClient(i, event, ValidationTagEnum.EMPTY);
+                if (!_sendEventToClient(i, event, ValidationTagEnum.EMPTY))
+                  return;
+
                 break;
               }
             case ValidationTagEnum.NOT_EQUAL:
@@ -65,7 +76,23 @@ extension DefaultValidatorExtensions on AbstractRuleBuilder {
               }
             case ValidationTagEnum.MUST:
               {
-                _sendEventToClient(i, event, ValidationTagEnum.MUST);
+                if (!_sendEventToClient(i, event, ValidationTagEnum.MUST))
+                  return;
+
+                break;
+              }
+            case ValidationTagEnum.CONST_EQUAL:
+              {
+                if (!_sendEventToClient(
+                    i, event, ValidationTagEnum.CONST_EQUAL)) return;
+
+                break;
+              }
+            case ValidationTagEnum.CONST_NOT_EQUAL:
+              {
+                if (!_sendEventToClient(
+                    i, event, ValidationTagEnum.CONST_NOT_EQUAL)) return;
+
                 break;
               }
           }
@@ -74,7 +101,7 @@ extension DefaultValidatorExtensions on AbstractRuleBuilder {
     );
   }
 
-  void _sendEventToClient(
+  bool _sendEventToClient(
       int index, Object event, ValidationTagEnum validationTagEnum) {
     var isValidated =
         validatorInfoList[index].abstractValidation.validate(event);
@@ -84,6 +111,8 @@ extension DefaultValidatorExtensions on AbstractRuleBuilder {
       streamValidator.streamSink.addError(ValidationEnum.validated);
       streamValidator.streamSink.add(event);
     }
+
+    return isValidated;
   }
 
   void _sendEventToClientForEqualConditions(
@@ -144,6 +173,11 @@ extension DefaultValidatorExtensions on AbstractRuleBuilder {
     }
   }
 
+  /// <summary>
+  /// Defines a regular expression validator on the current rule builder, but only for string properties.
+  /// Validation will fail if the value returned by the lambda does not match the regular expression.
+  /// </summary>
+  /// <param name="expression">The regular expression to check the value against.</param>
   AbstractRuleBuilder matches(String expression) {
     _checkForExistingValidation(ValidationTagEnum.MATCHES);
 
@@ -155,6 +189,12 @@ extension DefaultValidatorExtensions on AbstractRuleBuilder {
     return this;
   }
 
+  /// <summary>
+  /// Defines an email validator on the current rule builder for string properties.
+  /// Validation will fail if the value returned by the lambda is not a valid email address.
+  /// </summary>
+  /// <typeparam name="T">Type of object being validated</typeparam>
+  /// <returns></returns>
   AbstractRuleBuilder emailAddress() {
     _checkForExistingValidation(ValidationTagEnum.EMAIL_ADDRESS);
 
@@ -168,6 +208,12 @@ extension DefaultValidatorExtensions on AbstractRuleBuilder {
     return this;
   }
 
+  /// <summary>
+  /// Defines an Number validator on the current rule builder for string properties.
+  /// Validation will fail if the value returned by the lambda is not a Number.
+  /// </summary>
+  /// <typeparam name="T">Type of object being validated</typeparam>
+  /// <returns></returns>
   AbstractRuleBuilder shouldBeNumber() {
     _checkForExistingValidation(ValidationTagEnum.SHOULD_BE_NUMBER);
 
@@ -178,7 +224,13 @@ extension DefaultValidatorExtensions on AbstractRuleBuilder {
     return this;
   }
 
-  AbstractRuleBuilder between(int from, int to) {
+  /// <summary>
+  /// Defines a length validator on the current rule builder, but only for string properties.
+  /// Validation will fail if the length of the string is not equal to the length specified.
+  /// </summary>
+  /// <typeparam name="T">Type of object being validated</typeparam>
+  /// <returns></returns>
+  AbstractRuleBuilder length(int from, int to) {
     _checkForExistingValidation(ValidationTagEnum.BETWEEN);
 
     validatorInfoList.add(ValidatorInfo(
@@ -188,7 +240,13 @@ extension DefaultValidatorExtensions on AbstractRuleBuilder {
     return this;
   }
 
-  AbstractRuleBuilder isNotEmpty() {
+  /// <summary>
+  /// Defines a 'not empty' validator on the current rule builder.
+  /// Validation will fail if the property is null, an empty string, whitespace, an empty collection or the default value for the type (for example, 0 for integers but null for nullable integers)
+  /// </summary>
+  /// <typeparam name="T">Type of object being validated</typeparam>
+  /// <returns></returns>
+  AbstractRuleBuilder notEmpty() {
     _checkForExistingValidation(ValidationTagEnum.NOT_EMPTY);
 
     validatorInfoList.add(ValidatorInfo(
@@ -198,7 +256,13 @@ extension DefaultValidatorExtensions on AbstractRuleBuilder {
     return this;
   }
 
-  AbstractRuleBuilder isEmpty() {
+  /// <summary>
+  /// Defines a 'empty' validator on the current rule builder.
+  /// Validation will fail if the property is not null, an empty or the default value for the type (for example, 0 for integers)
+  /// </summary>
+  /// <typeparam name="T">Type of object being validated</typeparam>
+  /// <returns></returns>
+  AbstractRuleBuilder empty() {
     _checkForExistingValidation(ValidationTagEnum.EMPTY);
 
     validatorInfoList.add(ValidatorInfo(
@@ -209,6 +273,14 @@ extension DefaultValidatorExtensions on AbstractRuleBuilder {
     return this;
   }
 
+  /// <summary>
+  /// Defines a 'not equal' validator on the current rule builder.
+  /// Validation will fail if the specified value is equal to the value of the property.
+  /// For strings, this performs an ordinal comparison unless you specify a different comparer.
+  /// </summary>
+  /// <typeparam name="T">Type of object being validated</typeparam>
+  /// <typeparam name="TProperty">Type of property being validated</typeparam>
+  /// <returns></returns>
   AbstractRuleBuilder
       notEqualTo<TProperty extends StreamValidator, T extends Object>(
           TProperty Function(AbstractValidator<T>) expression) {
@@ -226,6 +298,14 @@ extension DefaultValidatorExtensions on AbstractRuleBuilder {
     return this;
   }
 
+  /// <summary>
+  /// Defines an 'equals' validator on the current rule builder.
+  /// Validation will fail if the specified value is not equal to the value of the property.
+  /// For strings, this performs an ordinal comparison unless you specify a different comparer.
+  /// </summary>
+  /// <typeparam name="T">Type of object being validated</typeparam>
+  /// <typeparam name="TProperty">Type of property being validated</typeparam>
+  /// <returns></returns>
   AbstractRuleBuilder
       equalTo<TProperty extends StreamValidator, T extends Object>(
           TProperty Function(AbstractValidator<T>) expression) {
@@ -243,6 +323,59 @@ extension DefaultValidatorExtensions on AbstractRuleBuilder {
     return this;
   }
 
+  /// <summary>
+  /// Defines an 'equals Const Value' validator on the current rule builder.
+  /// Validation will fail if the specified value is not equal to the value of the property.
+  /// For strings, this performs an ordinal comparison unless you specify a different comparer.
+  /// </summary>
+  /// <typeparam name="T">Type of object being validated</typeparam>
+  /// <typeparam name="TProperty">Type of property being validated</typeparam>
+  /// <returns></returns>
+  AbstractRuleBuilder
+      equalToConstValue<TProperty extends StreamValidator, T extends Object>(
+          Object value) {
+    _checkForExistingValidation(ValidationTagEnum.CONST_EQUAL);
+
+    validatorInfoList.add(ValidatorInfo(
+        errorMessage: "value should be Equal",
+        abstractValidation: CompareToConstValueValidation(
+            newValue: value, validationTagEnum: ValidationTagEnum.CONST_EQUAL),
+        validationTagEnum: ValidationTagEnum.CONST_EQUAL));
+
+    return this;
+  }
+
+  /// <summary>
+  /// Defines a 'not equal Const Value' validator on the current rule builder.
+  /// Validation will fail if the specified value is equal to the value of the property.
+  /// For strings, this performs an ordinal comparison unless you specify a different comparer.
+  /// </summary>
+  /// <typeparam name="T">Type of object being validated</typeparam>
+  /// <typeparam name="TProperty">Type of property being validated</typeparam>
+  /// <returns></returns>
+  AbstractRuleBuilder
+      notEqualToConstValue<TProperty extends StreamValidator, T extends Object>(
+          Object value) {
+    _checkForExistingValidation(ValidationTagEnum.CONST_NOT_EQUAL);
+
+    validatorInfoList.add(ValidatorInfo(
+        errorMessage: "value should not be  Equal",
+        abstractValidation: CompareToConstValueValidation(
+            newValue: value,
+            validationTagEnum: ValidationTagEnum.CONST_NOT_EQUAL),
+        validationTagEnum: ValidationTagEnum.CONST_NOT_EQUAL));
+
+    return this;
+  }
+
+  /// <summary>
+  /// Defines a predicate validator on the current rule builder using a lambda expression to specify the predicate.
+  /// Validation will fail if the specified lambda returns false.
+  /// Validation will succeed if the specified lambda returns true.
+  /// </summary>
+  /// <typeparam name="T">Type of object being validated</typeparam>
+  /// <typeparam name="TProperty">Type of property being validated</typeparam>
+  /// <returns></returns>
   AbstractRuleBuilder must<TProperty extends StreamValidator, T extends Object>(
       bool Function(Object) expression) {
     _checkForExistingValidation(ValidationTagEnum.MUST);
@@ -255,6 +388,12 @@ extension DefaultValidatorExtensions on AbstractRuleBuilder {
     return this;
   }
 
+  /// <summary>
+  /// Specifies a custom error message to use when validation fails. Only applies to the rule that directly precedes it.
+  /// </summary>
+  /// <param name="rule">The current rule</param>
+  /// <param name="errorMessage">The error message to use</param>
+  /// <returns></returns>
   AbstractRuleBuilder withMessage(Object errorMessage) {
     if (validatorInfoList.isEmpty) {
       throw Exception("should add rule before with message");

@@ -11,10 +11,13 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="47675412-3667-4f43-aac7-beab77797cba" name="Default Changelist" comment="fixing equal bugs">
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Dart_Packages.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/Dart_Packages.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/lib/model/compare_to_value_validation.dart" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/example/pubspec.lock" beforeDir="false" afterPath="$PROJECT_DIR$/example/pubspec.lock" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/abstract/abstract_validator.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/abstract/abstract_validator.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/enum/validation_enum.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/enum/validation_enum.dart" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/lib/extensions/default_validator_extensions.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/extensions/default_validator_extensions.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/fluent_validation.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/fluent_validation.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/validator.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/validator.dart" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -57,6 +60,12 @@
     <key name="CopyFile.RECENT_KEYS">
       <recent name="D:\codes\Personal_Project\stream_fluent_validation_v2\lib\model" />
     </key>
+  </component>
+  <component name="RunManager">
+    <configuration name="main.dart" type="FlutterRunConfigurationType" factoryName="Flutter">
+      <option name="filePath" value="$PROJECT_DIR$/example/lib/main.dart" />
+      <method v="2" />
+    </configuration>
   </component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">

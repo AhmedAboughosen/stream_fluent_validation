@@ -4,6 +4,12 @@ import '../enum/validation_enum.dart';
 import '../validator.dart';
 import 'abstract_rule_builder.dart';
 import 'package:fluent_validation/extensions/default_validator_extensions.dart';
+
+/// <summary>
+/// Base class for object validators.
+/// </summary>
+/// <typeparam name="T">The type of the object being validated</typeparam>
+///
 abstract class AbstractValidator<T extends Object> extends IValidator<T> {
   final List<AbstractRuleBuilder> _rules = [];
 
@@ -18,12 +24,11 @@ abstract class AbstractValidator<T extends Object> extends IValidator<T> {
     return true;
   }
 
-  /// <summary>
-  /// Defines a validation rule for a specify property.
-  /// </summary>
-  /// <example>
-  /// RuleFor(x => x.name)...
-  /// Property should extends Stream Validator
+  /// <summary>Defines a validation rule for a specify property.</summary>
+  /// <example>RuleFor(x =&gt; x.Surname)...</example>
+  /// <typeparam name="TProperty">The type of property being validated</typeparam>
+  /// <param name="expression">The expression representing the property to validate</param>
+  /// <returns>an AbstractRuleBuilder instance on which validators can be defined</returns>
   AbstractRuleBuilder ruleFor<TProperty extends StreamValidator>(
       TProperty Function(AbstractValidator<T>) expression) {
     var streamValidator = expression(this);
@@ -34,6 +39,7 @@ abstract class AbstractValidator<T extends Object> extends IValidator<T> {
 
     return _rules[_rules.length - 1];
   }
+
 
   void _addRule<TProperty extends StreamValidator>(TProperty property) {
     _rules.add(AbstractRuleBuilder<T>(
