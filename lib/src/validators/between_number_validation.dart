@@ -1,4 +1,4 @@
-import 'abstract_validators.dart';
+import 'package:stream_fluent_validation/fluent_validation.dart';
 
 class BetweenNumberValidation extends AbstractValidators {
   final int from;

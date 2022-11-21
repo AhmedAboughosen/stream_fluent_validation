@@ -1,8 +1,6 @@
 
 
-import '../../fluent_validation.dart';
-import '../enum/validation_enum.dart';
-import 'abstract_validators.dart';
+import 'package:stream_fluent_validation/fluent_validation.dart';
 
 
 class CompareToConstValueValidation<TProperty extends StreamValidator,

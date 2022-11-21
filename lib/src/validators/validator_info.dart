@@ -1,4 +1,4 @@
-import '../../fluent_validation.dart';
+import 'package:stream_fluent_validation/fluent_validation.dart';
 
 
 class ValidatorInfo {

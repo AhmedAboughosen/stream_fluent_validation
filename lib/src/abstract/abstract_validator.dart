@@ -1,9 +1,5 @@
 
-import '../validator.dart';
-import '../enum/validation_enum.dart';
-import '../validators/stream_validator.dart';
-import 'abstract_rule_builder.dart';
-import 'package:stream_fluent_validation/src/extensions/default_validator_extensions.dart';
+import 'package:stream_fluent_validation/fluent_validation.dart';
 
 /// <summary>
 /// Base class for object validators.

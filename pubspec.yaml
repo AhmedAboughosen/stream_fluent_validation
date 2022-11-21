@@ -1,7 +1,7 @@
 name: stream_fluent_validation
 description: Stream Fluent Validation
   allows easy validation of objects without crazy amounts of boilerplate..
-version: 1.0.3
+version: 1.0.4
 author: Ahmed Aboughsen
 repository: https://github.com/AhmedAboughosen/stream_fluent_validation
 issue_tracker: https://github.com/AhmedAboughosen/stream_fluent_validation/issues

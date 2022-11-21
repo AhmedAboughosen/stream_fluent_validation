@@ -1,7 +1,5 @@
 
-import '../validators/stream_validator.dart';
-import '../validators/validator_info.dart';
-import 'abstract_validator.dart';
+import 'package:stream_fluent_validation/fluent_validation.dart';
 
 class AbstractRuleBuilder<T extends Object> {
   final StreamValidator streamValidator;
