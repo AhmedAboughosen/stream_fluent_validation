@@ -1,6 +1,7 @@
-name: fluent_validation
-description: A new Flutter project.
-version: 0.0.1
+name: stream_fluent_validation
+description: Stream Fluent Validation
+  allows easy validation of objects without crazy amounts of boilerplate..
+version: 1.0.1
 author:
 homepage:
 
@@ -12,10 +13,9 @@ dependencies:
   flutter:
     sdk: flutter
   rxdart: ^0.27.5
-  get_it:
 
-  live_stream:
-    git: git@github.com:AhmedAboughosen/live_stream.git
+#  live_stream:
+#    git: git@github.com:AhmedAboughosen/live_stream.git
 
 dev_dependencies:
   flutter_test:

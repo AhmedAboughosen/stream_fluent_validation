@@ -1,9 +1,9 @@
 import 'dart:async';
 
-import 'package:live_stream/src/live_stream.dart';
+// import 'package:live_stream/src/live_stream.dart';
 import 'package:rxdart/rxdart.dart';
 
-class StreamValidator<T extends Object> extends StreamBase<T> {
+class StreamValidator<T extends Object>  {
   final _outerStream = BehaviorSubject<T>(sync: true);
   final _innerStream = BehaviorSubject<T>(sync: true);
 

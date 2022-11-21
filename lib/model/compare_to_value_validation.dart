@@ -1,4 +1,4 @@
-import 'package:fluent_validation/model/stream_validator.dart';
+import 'package:stream_fluent_validation/model/stream_validator.dart';
 
 import '../enum/validation_enum.dart';
 import 'abstract_validation.dart';

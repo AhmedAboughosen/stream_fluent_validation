@@ -1,6 +1,6 @@
-import 'package:fluent_validation/abstract/abstract_rule_builder.dart';
-import 'package:fluent_validation/enum/validation_enum.dart';
-import 'package:fluent_validation/model/validator_info.dart';
+import 'package:stream_fluent_validation/abstract/abstract_rule_builder.dart';
+import 'package:stream_fluent_validation/enum/validation_enum.dart';
+import 'package:stream_fluent_validation/model/validator_info.dart';
 
 import '../abstract/abstract_validator.dart';
 import '../model/between_number_validation.dart';

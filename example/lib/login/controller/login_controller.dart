@@ -25,6 +25,6 @@ class LoginValidation extends AbstractValidator<LoginValidation> {
         .emailAddress()
         .withMessage("email should be valid !!.");
 
-    ruleFor((e) => (e as LoginValidation).password).between(3, 4);
+    ruleFor((e) => (e as LoginValidation).password).between(3, 4)  .withMessage("password  should contain from 3 to 4 digit  !!.");
   }
 }

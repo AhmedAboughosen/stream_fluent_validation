@@ -89,7 +89,6 @@
         <entry key="get_it">
           <value>
             <list>
-              <option value="C:/flutterVersions/flutter/.pub-cache/hosted/pub.dartlang.org/get_it-7.1.3/lib" />
               <option value="C:/flutterVersions/flutter/.pub-cache/hosted/pub.dartlang.org/get_it-7.2.0/lib" />
             </list>
           </value>
@@ -221,7 +220,6 @@
       <root url="file://C:/flutterVersions/flutter/.pub-cache/hosted/pub.dartlang.org/cupertino_icons-1.0.5/lib" />
       <root url="file://C:/flutterVersions/flutter/.pub-cache/hosted/pub.dartlang.org/fake_async-1.3.0/lib" />
       <root url="file://C:/flutterVersions/flutter/.pub-cache/hosted/pub.dartlang.org/flutter_lints-2.0.1/lib" />
-      <root url="file://C:/flutterVersions/flutter/.pub-cache/hosted/pub.dartlang.org/get_it-7.1.3/lib" />
       <root url="file://C:/flutterVersions/flutter/.pub-cache/hosted/pub.dartlang.org/get_it-7.2.0/lib" />
       <root url="file://C:/flutterVersions/flutter/.pub-cache/hosted/pub.dartlang.org/lints-2.0.1/lib" />
       <root url="file://C:/flutterVersions/flutter/.pub-cache/hosted/pub.dartlang.org/matcher-0.12.11/lib" />
