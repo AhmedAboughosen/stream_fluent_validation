@@ -145,12 +145,10 @@ packages:
   stream_fluent_validation:
     dependency: "direct main"
     description:
-      path: "."
-      ref: HEAD
-      resolved-ref: e78459728d8b8bcbfbde8b5557d1de3150720d7a
-      url: "git@github.com:AhmedAboughosen/stream_fluent_validation.git"
-    source: git
-    version: "1.0.1"
+      name: stream_fluent_validation
+      url: "https://pub.dartlang.org"
+    source: hosted
+    version: "1.0.2"
   string_scanner:
     dependency: transitive
     description:

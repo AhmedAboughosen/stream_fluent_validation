@@ -1,6 +1,5 @@
-import 'package:stream_fluent_validation/validators/abstract_validators.dart';
+import '../../fluent_validation.dart';
 
-import '../enum/validation_enum.dart';
 
 class ValidatorInfo {
   final ValidationTagEnum validationTagEnum;

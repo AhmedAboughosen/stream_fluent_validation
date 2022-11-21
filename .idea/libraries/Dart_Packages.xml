@@ -153,7 +153,7 @@
         <entry key="stream_fluent_validation">
           <value>
             <list>
-              <option value="C:/flutterVersions/flutter/.pub-cache/git/stream_fluent_validation-e78459728d8b8bcbfbde8b5557d1de3150720d7a/lib" />
+              <option value="C:/flutterVersions/flutter/.pub-cache/hosted/pub.dartlang.org/stream_fluent_validation-1.0.2/lib" />
             </list>
           </value>
         </entry>
@@ -188,7 +188,6 @@
       </option>
     </properties>
     <CLASSES>
-      <root url="file://C:/flutterVersions/flutter/.pub-cache/git/stream_fluent_validation-e78459728d8b8bcbfbde8b5557d1de3150720d7a/lib" />
       <root url="file://C:/flutterVersions/flutter/.pub-cache/hosted/pub.dartlang.org/async-2.8.2/lib" />
       <root url="file://C:/flutterVersions/flutter/.pub-cache/hosted/pub.dartlang.org/boolean_selector-2.1.0/lib" />
       <root url="file://C:/flutterVersions/flutter/.pub-cache/hosted/pub.dartlang.org/characters-1.2.0/lib" />
@@ -208,6 +207,7 @@
       <root url="file://C:/flutterVersions/flutter/.pub-cache/hosted/pub.dartlang.org/source_span-1.8.2/lib" />
       <root url="file://C:/flutterVersions/flutter/.pub-cache/hosted/pub.dartlang.org/stack_trace-1.10.0/lib" />
       <root url="file://C:/flutterVersions/flutter/.pub-cache/hosted/pub.dartlang.org/stream_channel-2.1.0/lib" />
+      <root url="file://C:/flutterVersions/flutter/.pub-cache/hosted/pub.dartlang.org/stream_fluent_validation-1.0.2/lib" />
       <root url="file://C:/flutterVersions/flutter/.pub-cache/hosted/pub.dartlang.org/string_scanner-1.1.0/lib" />
       <root url="file://C:/flutterVersions/flutter/.pub-cache/hosted/pub.dartlang.org/term_glyph-1.2.0/lib" />
       <root url="file://C:/flutterVersions/flutter/.pub-cache/hosted/pub.dartlang.org/test_api-0.4.9/lib" />
