@@ -1,6 +1,6 @@
-import 'abstract_validation.dart';
+import 'abstract_validators.dart';
 
-class BetweenNumberValidation extends AbstractValidation {
+class BetweenNumberValidation extends AbstractValidators {
   final int from;
   final int to;
 

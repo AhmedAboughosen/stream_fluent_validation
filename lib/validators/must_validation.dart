@@ -1,6 +1,7 @@
-import 'abstract_validation.dart';
 
-class MustValidation extends AbstractValidation{
+import 'package:stream_fluent_validation/validators/abstract_validators.dart';
+
+class MustValidation extends AbstractValidators{
   final bool Function(Object) expression;
 
   MustValidation({required this.expression});

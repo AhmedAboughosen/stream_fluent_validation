@@ -1,11 +1,10 @@
 import 'package:flutter/material.dart';
+import 'package:stream_fluent_validation/abstract/abstract_validator.dart';
+import 'package:stream_fluent_validation/fluent_validation.dart';
 
 import 'changePin/page/change_pin_page.dart';
-import 'login/page/login_page.dart';
 
 void main() {
-
-
   runApp(const MyApp());
 }
 
@@ -29,7 +28,120 @@ class MyApp extends StatelessWidget {
         // is not restarted.
         primarySwatch: Colors.blue,
       ),
-      home: const ChangePinPage(),
+      home: const LoginPage(),
+    );
+  }
+}
+var loginController = LoginController();
+
+class LoginController {
+  final LoginValidation loginValidation = LoginValidation();
+
+  void login() {
+    if (!loginValidation.validate()) {
+      print("you can not login");
+      return;
+    }
+    print("your login succeed ");
+  }
+}
+
+class LoginValidation extends AbstractValidator<LoginValidation> {
+  StreamValidator<String> email = StreamValidator<String>();
+  StreamValidator<String> password = StreamValidator<String>();
+
+  LoginValidation() {
+    ruleFor((e) => (e as LoginValidation).email)
+        .notEmpty()
+        .withMessage("email should not be empty")
+        .emailAddress()
+        .withMessage("email should be valid !!.");
+
+    ruleFor((e) => (e as LoginValidation).password)
+        .length(3, 4)
+        .withMessage("password  should contain from 3 to 4 digit  !!.");
+  }
+}
+
+class LoginPage extends StatelessWidget {
+  const LoginPage({Key? key}) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+        appBar: AppBar(),
+        body: Column(
+          children: const [
+            SizedBox(
+              height: 30,
+            ),
+            EmailInput(),
+            SizedBox(
+              height: 30,
+            ),
+            PasswordInput(),
+            SizedBox(
+              height: 30,
+            ),
+            SubmitButton()
+          ],
+        ));
+  }
+}
+
+class EmailInput extends StatelessWidget {
+  const EmailInput({Key? key}) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) => StreamBuilder(
+        stream: loginController.loginValidation.email.stream,
+        builder: (context, snap) {
+          return TextField(
+            keyboardType: TextInputType.emailAddress,
+            onChanged: loginController.loginValidation.email.valueChange,
+            decoration: InputDecoration(
+                labelText: "Email address",
+                hintText: "you@example.com",
+                errorText: snap.hasError ? "${snap.error}" : null),
+          );
+        },
+      );
+}
+
+class PasswordInput extends StatelessWidget {
+  const PasswordInput({Key? key}) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) => StreamBuilder(
+        stream: loginController.loginValidation.password.stream,
+        builder: (context, snap) {
+          return TextField(
+            keyboardType: TextInputType.number,
+            onChanged: loginController.loginValidation.password.valueChange,
+            obscureText: true,
+            decoration: InputDecoration(
+                labelText: "Password",
+                hintText: "******",
+                errorText: snap.hasError ? "${snap.error}" : null),
+          );
+        },
+      );
+}
+
+class SubmitButton extends StatelessWidget {
+  const SubmitButton({Key? key}) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    return RaisedButton(
+      onPressed: () {
+        loginController.login();
+      },
+      color: Colors.blue,
+      child: const Text(
+        "Login",
+        style: TextStyle(color: Colors.white),
+      ),
     );
   }
 }

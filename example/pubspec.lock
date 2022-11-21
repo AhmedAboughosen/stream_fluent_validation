@@ -57,15 +57,6 @@ packages:
       url: "https://pub.dartlang.org"
     source: hosted
     version: "1.3.0"
-  fluent_validation:
-    dependency: "direct main"
-    description:
-      path: "."
-      ref: HEAD
-      resolved-ref: b74393a0bd1eef3a5b5bfc037cbd3f9a4f75b4b5
-      url: "git@github.com:AhmedAboughosen/stream_fluent_validation.git"
-    source: git
-    version: "0.0.1"
   flutter:
     dependency: "direct main"
     description: flutter
@@ -83,13 +74,6 @@ packages:
     description: flutter
     source: sdk
     version: "0.0.0"
-  get_it:
-    dependency: transitive
-    description:
-      name: get_it
-      url: "https://pub.dartlang.org"
-    source: hosted
-    version: "7.2.0"
   lints:
     dependency: transitive
     description:
@@ -97,15 +81,6 @@ packages:
       url: "https://pub.dartlang.org"
     source: hosted
     version: "2.0.1"
-  live_stream:
-    dependency: transitive
-    description:
-      path: "."
-      ref: HEAD
-      resolved-ref: "44cb3f31aa16d199f2598a0a721e438f674ba282"
-      url: "git@github.com:AhmedAboughosen/live_stream.git"
-    source: git
-    version: "0.0.1"
   matcher:
     dependency: transitive
     description:
@@ -127,13 +102,6 @@ packages:
       url: "https://pub.dartlang.org"
     source: hosted
     version: "1.7.0"
-  nested:
-    dependency: transitive
-    description:
-      name: nested
-      url: "https://pub.dartlang.org"
-    source: hosted
-    version: "1.0.0"
   path:
     dependency: transitive
     description:
@@ -174,6 +142,15 @@ packages:
       url: "https://pub.dartlang.org"
     source: hosted
     version: "2.1.0"
+  stream_fluent_validation:
+    dependency: "direct main"
+    description:
+      path: "."
+      ref: HEAD
+      resolved-ref: e78459728d8b8bcbfbde8b5557d1de3150720d7a
+      url: "git@github.com:AhmedAboughosen/stream_fluent_validation.git"
+    source: git
+    version: "1.0.1"
   string_scanner:
     dependency: transitive
     description:

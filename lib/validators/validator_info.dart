@@ -1,10 +1,11 @@
+import 'package:stream_fluent_validation/validators/abstract_validators.dart';
+
 import '../enum/validation_enum.dart';
-import 'abstract_validation.dart';
 
 class ValidatorInfo {
   final ValidationTagEnum validationTagEnum;
   final Object? errorMessage;
-  final AbstractValidation abstractValidation;
+  final AbstractValidators abstractValidation;
 
   ValidatorInfo({required this.abstractValidation,required this.validationTagEnum, this.errorMessage});
 }

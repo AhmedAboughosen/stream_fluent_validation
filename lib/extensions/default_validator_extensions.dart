@@ -1,14 +1,15 @@
 import 'package:stream_fluent_validation/abstract/abstract_rule_builder.dart';
 import 'package:stream_fluent_validation/enum/validation_enum.dart';
-import 'package:stream_fluent_validation/model/validator_info.dart';
+import 'package:stream_fluent_validation/validators/validator_info.dart';
 
 import '../abstract/abstract_validator.dart';
-import '../model/between_number_validation.dart';
-import '../model/compare_to_validation.dart';
-import '../model/compare_to_value_validation.dart';
-import '../model/must_validation.dart';
-import '../model/reg_rxp.dart';
-import '../model/stream_validator.dart';
+import '../validators/between_number_validation.dart';
+import '../validators/compare_to_value_validation.dart';
+import '../validators/empty_validation.dart';
+import '../validators/must_validation.dart';
+import '../validators/reg_rxp.dart';
+import '../validators/stream_host_validation.dart';
+import '../validators/stream_validator.dart';
 
 extension DefaultValidatorExtensions on AbstractRuleBuilder {
   ///when any change accrued on data inner stream will fire.
@@ -117,8 +118,8 @@ extension DefaultValidatorExtensions on AbstractRuleBuilder {
 
   void _sendEventToClientForEqualConditions(
       int index, Object event, ValidationTagEnum validationTagEnum) {
-    CompareToValidation compareToValidation =
-        validatorInfoList[index].abstractValidation as CompareToValidation;
+    StreamHostValidation compareToValidation =
+        validatorInfoList[index].abstractValidation as StreamHostValidation;
 
     var fromStreamValidator = compareToValidation.streamValidator;
 
@@ -142,8 +143,8 @@ extension DefaultValidatorExtensions on AbstractRuleBuilder {
 
   void _sendEventToClientForNotEqualConditions(
       int index, Object event, ValidationTagEnum validationTagEnum) {
-    CompareToValidation compareToValidation =
-        validatorInfoList[index].abstractValidation as CompareToValidation;
+    StreamHostValidation compareToValidation =
+        validatorInfoList[index].abstractValidation as StreamHostValidation;
 
     var fromStreamValidator = compareToValidation.streamValidator;
 
@@ -251,7 +252,7 @@ extension DefaultValidatorExtensions on AbstractRuleBuilder {
 
     validatorInfoList.add(ValidatorInfo(
         errorMessage: "value should not be empty",
-        abstractValidation: RegExpValue(expression: '^\\w{1,1}\$'),
+        abstractValidation: EmptyValidation(validationTagEnum: ValidationTagEnum.NOT_EMPTY),
         validationTagEnum: ValidationTagEnum.NOT_EMPTY));
     return this;
   }
@@ -267,7 +268,7 @@ extension DefaultValidatorExtensions on AbstractRuleBuilder {
 
     validatorInfoList.add(ValidatorInfo(
         errorMessage: "value should  be empty",
-        abstractValidation: RegExpValue(expression: '^\\w{0,0}\$'),
+        abstractValidation: EmptyValidation(validationTagEnum: ValidationTagEnum.EMPTY),
         validationTagEnum: ValidationTagEnum.EMPTY));
 
     return this;
@@ -292,7 +293,7 @@ extension DefaultValidatorExtensions on AbstractRuleBuilder {
     validatorInfoList.add(ValidatorInfo(
         errorMessage: "value should not be Equal",
         abstractValidation:
-            CompareToValidation(streamValidator: fromStreamValidator),
+        StreamHostValidation(streamValidator: fromStreamValidator),
         validationTagEnum: ValidationTagEnum.NOT_EQUAL));
 
     return this;
@@ -317,7 +318,7 @@ extension DefaultValidatorExtensions on AbstractRuleBuilder {
     validatorInfoList.add(ValidatorInfo(
         errorMessage: "value should be Equal",
         abstractValidation:
-            CompareToValidation(streamValidator: fromStreamValidator),
+        StreamHostValidation(streamValidator: fromStreamValidator),
         validationTagEnum: ValidationTagEnum.EQUAL));
 
     return this;

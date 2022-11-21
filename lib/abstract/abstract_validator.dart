@@ -1,7 +1,7 @@
-import 'package:stream_fluent_validation/model/stream_validator.dart';
 
 import '../enum/validation_enum.dart';
 import '../validator.dart';
+import '../validators/stream_validator.dart';
 import 'abstract_rule_builder.dart';
 import 'package:stream_fluent_validation/extensions/default_validator_extensions.dart';
 

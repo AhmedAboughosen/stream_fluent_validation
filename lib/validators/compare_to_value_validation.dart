@@ -1,11 +1,12 @@
-import 'package:stream_fluent_validation/model/stream_validator.dart';
+
+import 'package:stream_fluent_validation/validators/stream_validator.dart';
 
 import '../enum/validation_enum.dart';
-import 'abstract_validation.dart';
+import 'abstract_validators.dart';
 
 
 class CompareToConstValueValidation<TProperty extends StreamValidator,
-    T extends Object> extends AbstractValidation {
+    T extends Object> extends AbstractValidators {
   final Object newValue;
   final ValidationTagEnum validationTagEnum;
 

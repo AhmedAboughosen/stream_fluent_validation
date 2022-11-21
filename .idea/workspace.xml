@@ -10,22 +10,30 @@
     <select />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="47675412-3667-4f43-aac7-beab77797cba" name="Default Changelist" comment="add a new vaildation">
+    <list default="true" id="47675412-3667-4f43-aac7-beab77797cba" name="Default Changelist" comment="fixing mathcing issue">
+      <change afterPath="$PROJECT_DIR$/lib/validators/empty_validation.dart" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/lib/validators/stream_host_validation.dart" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/libraries/Dart_Packages.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/Dart_Packages.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.packages" beforeDir="false" afterPath="$PROJECT_DIR$/.packages" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/LICENSE" beforeDir="false" afterPath="$PROJECT_DIR$/LICENSE" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/example/lib/login/controller/login_controller.dart" beforeDir="false" afterPath="$PROJECT_DIR$/example/lib/login/controller/login_controller.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/example/lib/changePin/controller/change_pin_controller.dart" beforeDir="false" afterPath="$PROJECT_DIR$/example/lib/changePin/controller/change_pin_controller.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/example/lib/changePin/page/change_pin_page.dart" beforeDir="false" afterPath="$PROJECT_DIR$/example/lib/changePin/page/change_pin_page.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/example/lib/login/controller/login_controller.dart" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/example/lib/login/page/login_page.dart" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/example/lib/main.dart" beforeDir="false" afterPath="$PROJECT_DIR$/example/lib/main.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/example/pubspec.lock" beforeDir="false" afterPath="$PROJECT_DIR$/example/pubspec.lock" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/example/pubspec.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/example/pubspec.yaml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/lib/abstract/abstract_rule_builder.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/abstract/abstract_rule_builder.dart" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/lib/abstract/abstract_validator.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/abstract/abstract_validator.dart" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/lib/extensions/default_validator_extensions.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/extensions/default_validator_extensions.dart" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/lib/fluent_validation.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/fluent_validation.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/model/compare_to_validation.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/model/compare_to_validation.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/model/compare_to_value_validation.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/model/compare_to_value_validation.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/model/stream_validator.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/model/stream_validator.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pubspec.lock" beforeDir="false" afterPath="$PROJECT_DIR$/pubspec.lock" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pubspec.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/pubspec.yaml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/model/abstract_validation.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/validators/abstract_validators.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/model/between_number_validation.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/validators/between_number_validation.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/model/compare_to_validation.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/validators/compare_to_validation.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/model/compare_to_value_validation.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/validators/compare_to_value_validation.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/model/must_validation.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/validators/must_validation.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/model/reg_rxp.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/validators/reg_rxp.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/model/stream_validator.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/validators/stream_validator.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/model/validator_info.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/validators/validator_info.dart" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -61,11 +69,12 @@
   <component name="PropertiesComponent">
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="dart.analysis.tool.window.visible" value="false" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/lib/model" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/lib/validators" />
     <property name="show.migrate.to.gradle.popup" value="false" />
   </component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="D:\codes\Personal_Project\stream_fluent_validation_v2\lib\validators" />
       <recent name="D:\codes\Personal_Project\stream_fluent_validation_v2\lib\model" />
     </key>
   </component>
@@ -217,7 +226,14 @@
       <option name="project" value="LOCAL" />
       <updated>1668968020475</updated>
     </task>
-    <option name="localTasksCounter" value="20" />
+    <task id="LOCAL-00020" summary="fixing mathcing issue">
+      <created>1669016231919</created>
+      <option name="number" value="00020" />
+      <option name="presentableId" value="LOCAL-00020" />
+      <option name="project" value="LOCAL" />
+      <updated>1669016231919</updated>
+    </task>
+    <option name="localTasksCounter" value="21" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -251,7 +267,8 @@
     <MESSAGE value="fixing bug in equalTo validation" />
     <MESSAGE value="fixing equal bugs" />
     <MESSAGE value="add a new vaildation" />
-    <option name="LAST_COMMIT_MESSAGE" value="add a new vaildation" />
+    <MESSAGE value="fixing mathcing issue" />
+    <option name="LAST_COMMIT_MESSAGE" value="fixing mathcing issue" />
   </component>
   <component name="WindowStateProjectService">
     <state x="690" y="175" key="CheckoutDialog.Title" timestamp="1667893068040">
@@ -275,11 +292,15 @@
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="690" y="175" key="ImportDialog.Title/0.0.1920.1040@0.0.1920.1040" timestamp="1667893036049" />
-    <state x="361" y="145" key="Vcs.Push.Dialog.v2" timestamp="1668968161543">
-      <screen x="0" y="0" width="1536" height="824" />
+    <state x="598" y="281" key="MultipleFileMergeDialog" timestamp="1669016297699">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state x="598" y="281" key="MultipleFileMergeDialog/0.0.1920.1040@0.0.1920.1040" timestamp="1669016297699" />
+    <state x="451" y="183" key="Vcs.Push.Dialog.v2" timestamp="1669016451084">
+      <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="361" y="145" key="Vcs.Push.Dialog.v2/0.0.1536.824@0.0.1536.824" timestamp="1668968161543" />
-    <state x="451" y="183" key="Vcs.Push.Dialog.v2/0.0.1920.1040@0.0.1920.1040" timestamp="1668689535845" />
+    <state x="451" y="183" key="Vcs.Push.Dialog.v2/0.0.1920.1040@0.0.1920.1040" timestamp="1669016451084" />
     <state x="777" y="434" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2" timestamp="1668587307792">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>

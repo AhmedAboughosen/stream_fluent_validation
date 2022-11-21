@@ -1,6 +1,7 @@
-import 'abstract_validation.dart';
 
-class RegExpValue extends AbstractValidation {
+import 'package:stream_fluent_validation/validators/abstract_validators.dart';
+
+class RegExpValue extends AbstractValidators {
   final String expression;
 
   RegExpValue({required this.expression});
