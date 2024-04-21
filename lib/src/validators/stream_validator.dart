@@ -2,8 +2,9 @@ import 'dart:async';
 
 // import 'package:live_stream/src/live_stream.dart';
 import 'package:rxdart/rxdart.dart';
+import 'package:stream_fluent_validation/fluent_validation.dart';
 
-class StreamValidator<T extends Object>  {
+class StreamValidator<T extends Object> {
   final _outerStream = BehaviorSubject<T>(sync: true);
   final _innerStream = BehaviorSubject<T>(sync: true);
 
@@ -12,7 +13,7 @@ class StreamValidator<T extends Object>  {
 
   Stream<T> get innerStream => _innerStream.stream;
 
-  StreamSink<T> get streamSink => _outerStream.sink;
+  StreamSink<T> get outerStreamSink => _outerStream.sink;
 
   StreamSink<T> get innerStreamSink => _innerStream.sink;
 
@@ -20,10 +21,10 @@ class StreamValidator<T extends Object>  {
 
   T? get state => _outerStream.valueOrNull;
 
-
   T? get stateOfInnerStream => _innerStream.valueOrNull;
 
-  bool get hasError => _outerStream.hasError;
+  bool get hasError =>
+      error == ValidationEnum.validated ? false : _outerStream.hasError;
 
   bool get hasState => _outerStream.hasValue;
 
@@ -36,7 +37,13 @@ class StreamValidator<T extends Object>  {
   }
 
   void valueChange(T t) {
-
     innerStreamSink.add(t);
+  }
+
+  bool isValidated() {
+    if (state == null) {
+      outerStreamSink.addError(" ");
+    }
+    return !hasError;
   }
 }

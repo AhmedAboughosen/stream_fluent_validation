@@ -1,5 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
+  <component name="AutoImportSettings">
+    <option name="autoReloadType" value="SELECTIVE" />
+  </component>
   <component name="BranchesTreeState">
     <expand>
       <path>
@@ -11,9 +14,16 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="47675412-3667-4f43-aac7-beab77797cba" name="Default Changelist" comment="export import">
+      <change afterPath="$PROJECT_DIR$/lib/src/validators/validation_state_widget.dart" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/libraries/Dart_Packages.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/Dart_Packages.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/Dart_SDK.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/Dart_SDK.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pubspec.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/pubspec.yaml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/fluent_validation.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/fluent_validation.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/src/abstract/abstract_validator.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/src/abstract/abstract_validator.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/src/extensions/default_validator_extensions.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/src/extensions/default_validator_extensions.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/src/validator.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/src/validator.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/src/validators/stream_validator.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/src/validators/stream_validator.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pubspec.lock" beforeDir="false" afterPath="$PROJECT_DIR$/pubspec.lock" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -29,6 +39,9 @@
   </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="MarkdownSettingsMigration">
+    <option name="stateVersion" value="1" />
   </component>
   <component name="MavenImportPreferences">
     <option name="generalSettings">
@@ -46,12 +59,22 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">
-    <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
-    <property name="dart.analysis.tool.window.visible" value="false" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/lib/validators" />
-    <property name="show.migrate.to.gradle.popup" value="false" />
-  </component>
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
+    &quot;dart.analysis.tool.window.visible&quot;: &quot;false&quot;,
+    &quot;last_opened_file_path&quot;: &quot;D:/Software Engineering/programming projects/Mobile development/stream_fluent_validation&quot;,
+    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
+    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
+    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
+    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
+    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
+    &quot;show.migrate.to.gradle.popup&quot;: &quot;false&quot;,
+    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
+  }
+}</component>
   <component name="RecentsManager">
     <key name="MoveFile.RECENT_KEYS">
       <recent name="D:\codes\Personal_Project\stream_fluent_validation_v2\lib\src" />
@@ -75,6 +98,17 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1667756438343</updated>
+      <workItem from="1694513453903" duration="1000" />
+      <workItem from="1694513460660" duration="2509000" />
+      <workItem from="1694586613815" duration="572000" />
+      <workItem from="1694634664492" duration="72000" />
+      <workItem from="1710797504987" duration="603000" />
+      <workItem from="1710846211524" duration="2567000" />
+      <workItem from="1710864328043" duration="602000" />
+      <workItem from="1710866419093" duration="589000" />
+      <workItem from="1710872162944" duration="15000" />
+      <workItem from="1710872194190" duration="335000" />
+      <workItem from="1711013537844" duration="822000" />
     </task>
     <task id="LOCAL-00001" summary="change return email to AbstractRuleBuilder">
       <created>1667757299499</created>
@@ -240,6 +274,9 @@
     <option name="localTasksCounter" value="24" />
     <servers />
   </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="3" />
+  </component>
   <component name="Vcs.Log.Tabs.Properties">
     <option name="TAB_STATES">
       <map>
@@ -250,7 +287,6 @@
         </entry>
       </map>
     </option>
-    <option name="oldMeFiltersMigrated" value="true" />
   </component>
   <component name="VcsManagerConfiguration">
     <MESSAGE value="change return email to AbstractRuleBuilder" />

@@ -14,3 +14,4 @@ export 'package:stream_fluent_validation/src/validators/reg_rxp.dart';
 export 'package:stream_fluent_validation/src/validators/stream_validator.dart';
 export 'package:stream_fluent_validation/src/validators/validator_info.dart';
 export 'package:stream_fluent_validation/src/validator.dart';
+export 'package:stream_fluent_validation/src/validators/validation_state_widget.dart';

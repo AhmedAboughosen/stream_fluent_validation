@@ -97,10 +97,10 @@ extension DefaultValidatorExtensions on AbstractRuleBuilder {
     var isValidated =
         validatorInfoList[index].abstractValidation.validate(event);
     if (!isValidated) {
-      streamValidator.streamSink.addError(_getErrorMessage(validationTagEnum));
+      streamValidator.outerStreamSink.addError(_getErrorMessage(validationTagEnum));
     } else {
-      streamValidator.streamSink.addError(ValidationEnum.validated);
-      streamValidator.streamSink.add(event);
+      streamValidator.outerStreamSink.addError(ValidationEnum.validated);
+      streamValidator.outerStreamSink.add(event);
     }
 
     return isValidated;
@@ -115,19 +115,19 @@ extension DefaultValidatorExtensions on AbstractRuleBuilder {
 
     fromStreamValidator.innerStream.listen((event) {
       if (streamValidator.stateOfInnerStream != event) {
-        streamValidator.streamSink
+        streamValidator.outerStreamSink
             .addError(_getErrorMessage(validationTagEnum));
       } else {
-        streamValidator.streamSink.addError(ValidationEnum.validated);
-        streamValidator.streamSink.add(event);
+        streamValidator.outerStreamSink.addError(ValidationEnum.validated);
+        streamValidator.outerStreamSink.add(event);
       }
     });
 
     if (event != fromStreamValidator.stateOfInnerStream) {
-      streamValidator.streamSink.addError(_getErrorMessage(validationTagEnum));
+      streamValidator.outerStreamSink.addError(_getErrorMessage(validationTagEnum));
     } else {
-      streamValidator.streamSink.addError(ValidationEnum.validated);
-      streamValidator.streamSink.add(event);
+      streamValidator.outerStreamSink.addError(ValidationEnum.validated);
+      streamValidator.outerStreamSink.add(event);
     }
   }
 
@@ -140,19 +140,19 @@ extension DefaultValidatorExtensions on AbstractRuleBuilder {
 
     fromStreamValidator.innerStream.listen((event) {
       if (streamValidator.stateOfInnerStream == event) {
-        streamValidator.streamSink
+        streamValidator.outerStreamSink
             .addError(_getErrorMessage(validationTagEnum));
       } else {
-        streamValidator.streamSink.addError(ValidationEnum.validated);
-        streamValidator.streamSink.add(event);
+        streamValidator.outerStreamSink.addError(ValidationEnum.validated);
+        streamValidator.outerStreamSink.add(event);
       }
     });
 
     if (event == fromStreamValidator.stateOfInnerStream) {
-      streamValidator.streamSink.addError(_getErrorMessage(validationTagEnum));
+      streamValidator.outerStreamSink.addError(_getErrorMessage(validationTagEnum));
     } else {
-      streamValidator.streamSink.addError(ValidationEnum.validated);
-      streamValidator.streamSink.add(event);
+      streamValidator.outerStreamSink.addError(ValidationEnum.validated);
+      streamValidator.outerStreamSink.add(event);
     }
   }
 

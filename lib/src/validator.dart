@@ -8,4 +8,5 @@ abstract class IValidator<T extends Object> {
   /// <param name="instance">The instance to validate</param>
   /// <returns>A ValidationResult object containing any validation failures.</returns>
   bool validate();
+  void close();
 }
